@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <button menuToggle>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+
+    <ion-title>EPITECH student search</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="home">
+
+  <ion-searchbar
+     [(ngModel)]="query"
+     (ionInput)="queryUpdated($event)"
+     debounce="20"
+     placeholder="An username, a year, a login…">
+  </ion-searchbar>
+
+  <ion-list>
+    <ion-item class="item-user" *ngFor="let user of users">
+      {{ user.name }}
+
+      <small>
+        <span>{{ user.login }}</span>
+        <span>{{ user.year }}</span>
+        <span>{{ user.location }}</span>
+      </small>
+
+    </ion-item>
+  </ion-list>
+
+  <ion-card *ngIf="error" class="error">
+    <ion-card-header>An error occured</ion-card-header>
+
+    <ion-card-content>
+      {{ error }}
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

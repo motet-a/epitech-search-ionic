@@ -1,0 +1,24 @@
+/*
+.home .searchbar-search-icon {
+    top: 8px; // The icon was badly vertically centered
+}
+*/
+
+.home {
+
+    ion-item.item-user small {
+        color: color($colors, grey);
+        float: right;
+    }
+
+    ion-item.item-user span {
+        margin-left: 1em;
+    }
+
+    ion-card.error {
+        ion-card-content {
+            color: color($colors, grey);
+        }
+    }
+
+}
