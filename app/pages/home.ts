@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
-import {NavController} from 'ionic-angular';
+import {NavController, ActionSheet} from 'ionic-angular';
+
 import {SearchService} from '../providers/search';
 import {User} from '../providers/user';
 
@@ -31,5 +32,33 @@ export class HomePage {
                 this.users = [];
                 this.error = error.message;
             });
+    }
+
+    showUserActionSheet(user) {
+        const actionSheet = ActionSheet.create({
+            title: user.name,
+            buttons: [
+                {
+                    text: 'View on intra.epitech.eu',
+                    handler: () => {
+                        this.viewUserOnIntranet(user);
+                    }
+                },
+                {
+                    text: 'Cancel',
+                    role: 'cancel',
+                    handler: () => {
+                    }
+                }
+            ],
+        });
+        this.navCtrl.present(actionSheet);
+    }
+
+    viewUserOnIntranet(user) {
+        const url = 'https://intra.epitech.eu/user/' + user.login;
+        const features = "menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes";
+
+        window.open(url, '_system', features);
     }
 }

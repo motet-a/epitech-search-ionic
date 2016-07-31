@@ -18,7 +18,10 @@
   </ion-searchbar>
 
   <ion-list>
-    <ion-item class="item-user" *ngFor="let user of users">
+    <ion-item class="item-user"
+              *ngFor="let user of users"
+              (click)="showUserActionSheet(user)">
+
       {{ user.name }}
 
       <small>
